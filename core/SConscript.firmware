@@ -468,6 +468,12 @@ if FROZEN:
     SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/crypto/*.py'))
     SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/res/*.py'))
     SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/ui/*.py'))
+    SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/ui/formfactor/*.py'))
+    if env.get('TREZOR_MODEL') == 'T':
+        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/ui/formfactor/tt/*.py'))
+    else:
+        raise ValueError('Unknown Trezor model')
+
     SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/wire/*.py'))
 
     SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'storage/*.py'))
