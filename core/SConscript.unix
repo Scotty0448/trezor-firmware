@@ -436,6 +436,8 @@ if FROZEN:
     SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/ui/formfactor/*.py'))
     if env.get('TREZOR_MODEL') == 'T':
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/ui/formfactor/tt/*.py'))
+    elif env.get('TREZOR_MODEL') == '1':
+        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/ui/formfactor/t1/*.py'))
     else:
         raise ValueError('Unknown Trezor model')
 
