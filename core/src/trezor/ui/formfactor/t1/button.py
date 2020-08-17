@@ -136,9 +136,9 @@ def _render_background(
     _ax, ay, _aw, ah = area
     if s.radius > 0:
         _bar_radius1(
-            ui.WIDTH - text_width - 2 if is_right else 0,  # x
+            ui.WIDTH - text_width - 3 if is_right else 0,  # x
             ay,  # y
-            text_width + 2,  # w
+            text_width + 3,  # w
             ah,  # h
             s.bg_color,  # fgcolor
         )
