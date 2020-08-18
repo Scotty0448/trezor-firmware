@@ -59,6 +59,7 @@ if _IS_T1:
         DEFAULT_CONFIRM,
         DEFAULT_CONFIRM_STYLE,
         confirm_button_area,
+        hold_to_confirm_button_area,
     )
     from .t1.text import (
         TEXT_HEADER_HEIGHT,
@@ -88,6 +89,7 @@ elif not TYPE_CHECKING:
         DEFAULT_CONFIRM,
         DEFAULT_CONFIRM_STYLE,
         confirm_button_area,
+        hold_to_confirm_button_area,
     )
     from .tt.text import (
         TEXT_HEADER_HEIGHT,

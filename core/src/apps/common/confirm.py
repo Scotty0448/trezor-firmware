@@ -50,6 +50,7 @@ async def confirm(
     return await ctx.wait(dialog) is CONFIRMED
 
 
+# not on T1?
 async def info_confirm(
     ctx: wire.GenericContext,
     content: ui.Component,

@@ -177,6 +177,25 @@ class Text(ui.Component):
             return [self.header_text] + lines[: self.max_lines]
 
 
+class TextNoHeader(Text):
+    def __init__(
+        self,
+        max_lines: int = TEXT_MAX_LINES,
+        new_lines: bool = True,
+    ):
+        self.max_lines = max_lines
+        self.new_lines = new_lines
+        self.content = []  # type: List[TextContent]
+        self.header_text = "" # XXX used in read_content
+        self.repaint = True
+
+    def on_render(self) -> None:
+        if self.repaint:
+            render_text(self.content, self.new_lines, self.max_lines, offset_y=TEXT_LINE_HEIGHT-2)
+            self.repaint = False
+
+
+
 LABEL_LEFT = const(0)
 LABEL_CENTER = const(1)
 LABEL_RIGHT = const(2)

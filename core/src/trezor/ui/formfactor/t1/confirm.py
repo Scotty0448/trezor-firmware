@@ -21,3 +21,6 @@ def confirm_button_area(
             return (0, ui.HEIGHT - 11, 2 * ui.WIDTH // 3, 11)
         else:
             return (0, ui.HEIGHT - 11, ui.WIDTH // 2, 11)
+
+def hold_to_confirm_button_area(is_right: bool, only_one: bool = False):
+    return confirm_button_area(is_right, only_one)

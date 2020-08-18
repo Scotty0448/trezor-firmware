@@ -384,6 +384,7 @@ bool display_toif_info(const uint8_t *data, uint32_t len, uint16_t *out_w,
 #include "loader.h"
 #endif
 
+// XXX T1 is not square
 void display_loader(uint16_t progress, bool indeterminate, int yoffset,
                     uint16_t fgcolor, uint16_t bgcolor, const uint8_t *icon,
                     uint32_t iconlen, uint16_t iconfgcolor) {

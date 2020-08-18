@@ -17,7 +17,7 @@ async def wipe_device(ctx, msg):
         ctx,
         text,
         ButtonRequestType.WipeDevice,
-        confirm_style=ButtonCancel,
+        #confirm_style=ButtonCancel,
         loader_style=LoaderDanger,
     )
 

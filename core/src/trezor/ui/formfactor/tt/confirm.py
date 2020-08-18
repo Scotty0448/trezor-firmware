@@ -25,3 +25,11 @@ def confirm_button_area(
             return ui.grid(12, cells_x=1)
         else:
             return ui.grid(8, n_x=2)
+
+def hold_to_confirm_button_area(is_right: bool, only_one: bool = False):
+    if only_one:
+        return ui.grid(4, n_x=1)
+    elif is_right:
+        return ui.grid(17, n_x=4, cells_x=3)
+    else:
+        return ui.grid(16, n_x=4)
