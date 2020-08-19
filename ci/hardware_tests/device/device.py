@@ -12,6 +12,19 @@ class Device:
         self.arduino_serial = arduino_serial
         self.serial = serial.Serial(arduino_serial, 9600)
 
+    def run_trezorctl(self, cmd: str):
+        full_cmd = "trezorctl "
+        full_cmd += cmd
+        print("[software/trezorctl] Running '{}'".format(full_cmd))
+        os.system(full_cmd)
+
+    def check_version(self):
+        self.run_trezorctl("get-features | grep version")
+
+    def reboot(self):
+        self.power_off()
+        self.power_on()
+
     def power_on(self):
         self.now()
         print("[hardware/usb] Turning power on...")

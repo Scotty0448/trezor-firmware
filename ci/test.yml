@@ -286,8 +286,32 @@ image: registry.gitlab.com/satoshilabs/trezor/trezor-firmware/trezor-firmware-en
 #      junit: tests/junit.xml
 #    expire_in: 1 week
 #    when: always
-#
-## Hardware
+
+# Hardware
+hardware core regular device test:
+  stage: test
+#  only:
+#    - schedules  # nightly build
+#    - /^legacy\//
+#    - /^release\//
+  tags:
+    - tpmb
+  needs: ["core fw regular debug build"]
+  script:
+    - cd ci/hardware_tests
+    - nix-shell --run "cd ../.. && pipenv sync"
+    - export TREZOR_PATH=$(./get_trezor_path.sh 'Trezor T')
+    - nix-shell --run "echo $TREZOR_PATH"
+    - nix-shell --run "pipenv run python bootstrap.py tt ../../trezor-*.bin"
+    - nix-shell --run "pipenv run pytest ../../tests/device_tests"
+  timeout: 3h
+  after_script:
+    - cd ci/hardware_tests && nix-shell --run "pipenv run python bootstrap.py tt --reboot"
+  artifacts:
+    name: "$CI_JOB_NAME-$CI_COMMIT_SHORT_SHA"
+    expire_in: 2 days
+    when: always
+
 #hardware legacy regular device test:
 #  stage: test
 #  only:
