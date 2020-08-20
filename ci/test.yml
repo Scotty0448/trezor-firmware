@@ -302,6 +302,7 @@ hardware core regular device test:
     - nix-shell --run "cd ../.. && pipenv sync"
     - export TREZOR_PATH=$(./get_trezor_path.sh 'Trezor T')
     - nix-shell --run "echo $TREZOR_PATH"
+    - nix-shell --run "pipenv run python bootstrap.py tt --reboot"
     - nix-shell --run "pipenv run python bootstrap.py tt ../../trezor-*.bin"
     - nix-shell --run "pipenv run pytest ../../tests/device_tests"
   timeout: 3h
